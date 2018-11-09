@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand">App SuperAdmin</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" (click)="_auth.logoutUser()">Logout</a>
+				</li>
+			</ul>
+	</div>
+</nav>
+	<div class="column">
+        <label for="name">Name:</label>
+        <input type="text" name="name" class="form-control" [(ngModel)]="name">
+        <label for="position">Position:</label>
+        <input type="text" name="position" class="form-control" [(ngModel)]="position">
+        <label for="imgurl">Url Image: (example: https://randomuser.me/api/portraits/men/20.jpg)</label>
+		<input type="text" name="imgurl" class="form-control" [(ngModel)]="imgurl">
+		<input type="button" value="Add" class="btn btn-primary"
+			(click)="addUser()">
+	</div>
+<div class="container">
+	<div id='card' *ngFor="let u of users">
+		<img alt='user-image' id='userImage' src='{{u.imgurl}}'>
+		<h4 id='name'>{{u.name}}</h4>
+		<div id='states'>
+			<ul id='info'>
+				<li>Position</li>
+			</ul>
+			<ul id='values'>
+				<li>{{u.position}}</li>
+			</ul>
+			<button (click)="deleteUser(u._id)">Delete</button>
+		</div>
+	</div>
+</div>
